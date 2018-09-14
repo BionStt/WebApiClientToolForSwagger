@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiClientCodeGenerator", "WebApiClientCodeGenerator\WebApiClientCodeGenerator.csproj", "{06D73A9C-916C-4FED-80D3-6440AB9712AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06D73A9C-916C-4FED-80D3-6440AB9712AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D73A9C-916C-4FED-80D3-6440AB9712AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D73A9C-916C-4FED-80D3-6440AB9712AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D73A9C-916C-4FED-80D3-6440AB9712AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3F58C2A-9C59-4E70-B0B4-9B37551B561A}
+	EndGlobalSection
+EndGlobal
