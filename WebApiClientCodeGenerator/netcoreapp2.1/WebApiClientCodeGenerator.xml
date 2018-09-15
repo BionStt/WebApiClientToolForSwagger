@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiSample</name>
+    </assembly>
+    <members>
+        <member name="M:ApiSample.Controllers.ValuesController.Get">
+            <summary>
+            GET 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiSample.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+             GET api/values/5
+            </summary>
+            <param name="id">ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiSample.Controllers.ValuesController.Post(System.String)">
+            <summary>
+             POST api/values
+            </summary>
+            <param name="value">VALUE</param>
+        </member>
+        <member name="M:ApiSample.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT api/values/5
+            </summary>
+            <param name="id">ID</param>
+            <param name="value">VALUE</param>
+        </member>
+        <member name="M:ApiSample.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            DELETE api/values/5
+            </summary>
+            <param name="id">ID</param>
+        </member>
+    </members>
+</doc>

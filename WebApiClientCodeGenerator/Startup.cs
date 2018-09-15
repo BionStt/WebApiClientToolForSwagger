@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace WebApiClientCodeGenerator
 {
@@ -26,6 +21,18 @@ namespace WebApiClientCodeGenerator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "WebApiClient代码生成器测试接口",
+                    Description = "WebApiClient代码生成器测试接口",
+                    Contact = new Contact { Name = "fanpan26", Url = "https://github.com/fanpan26" },
+                });
+                string path = Directory.GetCurrentDirectory();
+                s.IncludeXmlComments(Path.Combine(path, "WebApiClientCodeGenerator.xml")); // 标注要使用的 XML 文档
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +46,11 @@ namespace WebApiClientCodeGenerator
             {
                 app.UseHsts();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiClient代码生成器测试接口");
+            });
             app.UseHttpsRedirection();
             app.UseMvc();
         }
