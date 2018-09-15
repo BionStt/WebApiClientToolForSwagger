@@ -11,7 +11,7 @@ namespace WebApiClient.Tool.Tests
         {
             var client = HttpApiClient.Create<ISwaggerApi>();
             var result = await client.GetApiJson("http://localhost:5000/swagger/v1/swagger.json");
-            var json = SwaggerJsonLoader.Parse(result);
+            var json = SwaggerJsonParser.Parse(result);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace WebApiClient.Tool
         public Info Info { get; set; }
         public string Swagger { get; set; }
         public IEnumerable<ApiPath> Paths { get; set; }
+        public IEnumerable<ApiParameterDefinition> Definitions { get; set; }
     }
 
     /// <summary>
@@ -46,7 +47,25 @@ namespace WebApiClient.Tool
         public string Summary { get; set; }
         public string[] Produces { get; set; }
         public string[] Consumes { get; set; }
+        public ApiResponse Responses { get; set; }
         public IEnumerable<ApiParameter> Parameters { get; set; }
+    }
+
+    public class ApiResponse
+    {
+        public string StatusCode { get; set; }
+        public string Description{ get; set; }
+        public ApiResponseSchema Schema{ get; set; }
+    }
+    public class ApiResponseSchema
+    {
+        public string Type { get; set; }
+        public string Ref { get; set; }
+        public ApiResponseSchemaItem Items { get; set; }
+    }
+    public class ApiResponseSchemaItem
+    {
+        public string Type{ get; set; }
     }
 
     public class ApiParameter
@@ -64,4 +83,20 @@ namespace WebApiClient.Tool
     {
         public string Type { get; set; }
     }
+
+    #region definitions
+    public class ApiParameterDefinition
+    {
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public IEnumerable<ApiParameterDefinitionProperty> Properties { get; set; }
+    }
+    public class ApiParameterDefinitionProperty
+    {
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Format { get; set; }
+        public string Ref { get; set; }
+    }
+    #endregion
 }

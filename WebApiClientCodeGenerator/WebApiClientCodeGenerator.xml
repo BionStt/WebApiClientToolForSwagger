@@ -10,11 +10,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiSample.Controllers.ValuesController.Get(System.Int32)">
+        <member name="M:ApiSample.Controllers.ValuesController.Get(ApiSample.Param.MyQueryModel)">
             <summary>
-             GET api/values/5
+            GET BY MyQueryModel
             </summary>
-            <param name="id">ID</param>
+            <param name="query"></param>
             <returns></returns>
         </member>
         <member name="M:ApiSample.Controllers.ValuesController.Post(System.String)">
@@ -23,12 +23,12 @@
             </summary>
             <param name="value">VALUE</param>
         </member>
-        <member name="M:ApiSample.Controllers.ValuesController.Put(System.Int32,System.String)">
+        <member name="M:ApiSample.Controllers.ValuesController.Put(System.Int32,ApiSample.Param.MyPostModel)">
             <summary>
-            PUT api/values/5
+            POST BY MyPostModel
             </summary>
-            <param name="id">ID</param>
-            <param name="value">VALUE</param>
+            <param name="id">id</param>
+            <param name="value">value</param>
         </member>
         <member name="M:ApiSample.Controllers.ValuesController.Delete(System.Int32)">
             <summary>

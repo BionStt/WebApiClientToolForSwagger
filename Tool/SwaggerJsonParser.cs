@@ -12,12 +12,48 @@ namespace WebApiClient.Tool
     {
         public static SwaggerJson Parse(JObject json)
         {
-            var swaggerJson = new SwaggerJson();
-
-            swaggerJson.Info = json["info"].ToObject<Info>();
-            swaggerJson.Swagger = json["swagger"].Value<string>();
-            swaggerJson.Paths = ParsePaths(json["paths"]);
+            var swaggerJson = new SwaggerJson
+            {
+                Info = json["info"].ToObject<Info>(),
+                Swagger = json["swagger"].Value<string>(),
+                Paths = ParsePaths(json["paths"]),
+                Definitions = ParseDefinitions(json["definitions"])
+            };
             return swaggerJson;
+        }
+
+        private static IEnumerable<ApiParameterDefinition> ParseDefinitions(JToken definitionToken)
+        {
+            var definitions = new List<ApiParameterDefinition>();
+            foreach (JProperty definitionProperty in definitionToken)
+            {
+                ApiParameterDefinition definition = new ApiParameterDefinition
+                {
+                    Type = definitionProperty.Value["type"].ToObject<string>(),
+                    Name = definitionProperty.Name
+                };
+                definition.Properties = ParseProperties(definitionProperty.Value["properties"]);
+                definitions.Add(definition);
+            }
+            return definitions;
+        }
+
+        private static IEnumerable<ApiParameterDefinitionProperty> ParseProperties(JToken propertyToken)
+        {
+            var properties = new List<ApiParameterDefinitionProperty>();
+            foreach (JProperty jProperty in propertyToken)
+            {
+                var prop = jProperty.Value.ToObject<ApiParameterDefinitionProperty>();
+                if (prop == null)
+                {
+                    prop = new ApiParameterDefinitionProperty();
+                    prop.Ref = jProperty.Value?.Value<string>("$ref")?.Replace("#/definitions/", "");
+                    prop.Type = "object";
+                }
+                prop.Name = jProperty.Name;
+                properties.Add(prop);
+            }
+            return properties;
         }
 
         private static IEnumerable<ApiPath> ParsePaths(JToken pathToken)
@@ -37,6 +73,7 @@ namespace WebApiClient.Tool
                     {
                         ApiPathDetail pathDetail = detailProperty.Value.ToObject<ApiPathDetail>();
                         pathDetail.HttpMethod = detailProperty.Name;
+                        pathDetail.Responses = ParseReponses(detailProperty.Value["responses"]);
                         details.Add(pathDetail);
                     }
                 }
@@ -45,6 +82,30 @@ namespace WebApiClient.Tool
                 paths.Add(path);
             }
             return paths;
+        }
+        private static ApiResponse ParseReponses(JToken reponseToken)
+        {
+            var response = new ApiResponse();
+            foreach (JProperty responseProperty in reponseToken)
+            {
+                response.StatusCode = responseProperty.Name;
+                response.Description = responseProperty.Value["description"].ToString();
+
+                if (responseProperty.Value["schema"] != null)
+                {
+                    ApiResponseSchema schema = responseProperty.Value["schema"].ToObject<ApiResponseSchema>();
+                    if (schema == null)
+                    {
+                        schema = new ApiResponseSchema
+                        {
+                            Type = "object",
+                            Ref = responseProperty.Value["schema"].Value<string>("$ref")?.Replace("#/definitions/", "")
+                        };
+                    }
+                    response.Schema = schema;
+                }
+            }
+            return response;
         }
     }
 }

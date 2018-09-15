@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiSample.Param;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiSample.Controllers
@@ -21,13 +22,14 @@ namespace ApiSample.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        
         /// <summary>
-        ///  GET api/values/5
+        /// GET BY MyQueryModel
         /// </summary>
-        /// <param name="id">ID</param>
+        /// <param name="query"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<string> Get([FromQuery]MyQueryModel query)
         {
             return Ok("value");
         }
@@ -37,17 +39,19 @@ namespace ApiSample.Controllers
         /// </summary>
         /// <param name="value">VALUE</param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public MyPostModel Post([FromBody] string value)
         {
+            return new MyPostModel { };
         }
 
+       
         /// <summary>
-        /// PUT api/values/5
+        /// POST BY MyPostModel
         /// </summary>
-        /// <param name="id">ID</param>
-        /// <param name="value">VALUE</param>
+        /// <param name="id">id</param>
+        /// <param name="value">value</param>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] MyPostModel value)
         {
         }
 
@@ -57,8 +61,9 @@ namespace ApiSample.Controllers
         /// </summary>
         /// <param name="id">ID</param>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public MyReturnModel Delete(int id)
         {
+            return new MyReturnModel { };
         }
     }
 }
