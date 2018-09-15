@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using SysConsole = System.Console;
+using System.Threading.Tasks;
 
 namespace WebApiClient.Tool.Console
 {
@@ -8,9 +9,8 @@ namespace WebApiClient.Tool.Console
     {
         static void Main(string[] args)
         {
-            var client = HttpApiClient.Create<ISwaggerApi>();
-            var result = client.GetApiJson("http://localhost:5000/swagger/v1/swagger.json").GetAwaiter().GetResult();
-            var json = SwaggerJsonParser.Parse(result);
+            CodeGenerator codeGenerator = new CodeGenerator();
+            codeGenerator.Start("http://localhost:5000/swagger/v1/swagger.json").Wait();
             SysConsole.Read();
         }
     }

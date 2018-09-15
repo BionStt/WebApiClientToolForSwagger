@@ -7,7 +7,7 @@ namespace WebApiClient.Tool
     /// <summary>
     /// http://host/swagger/v1/swagger.json
     /// </summary>
-    public class SwaggerJson
+    internal class SwaggerJson
     {
         public Info Info { get; set; }
         public string Swagger { get; set; }
@@ -18,7 +18,7 @@ namespace WebApiClient.Tool
     /// <summary>
     /// Info
     /// </summary>
-    public class Info
+    internal class Info
     {
         public Contact contact { get; set; }
         public string description { get; set; }
@@ -29,19 +29,19 @@ namespace WebApiClient.Tool
     /// <summary>
     /// Contact
     /// </summary>
-    public class Contact
+    internal class Contact
     {
         public string name { get; set; }
         public string url { get; set; }
     }
 
-    public class ApiPath
+    internal class ApiPath
     {
         public string Url { get; set; }
         public IEnumerable<ApiPathDetail> Details { get; set; }
     }
 
-    public class ApiPathDetail
+    internal class ApiPathDetail
     {
         public string HttpMethod { get; set; }
         public string Summary { get; set; }
@@ -51,52 +51,69 @@ namespace WebApiClient.Tool
         public IEnumerable<ApiParameter> Parameters { get; set; }
     }
 
-    public class ApiResponse
+    internal class ApiResponse
     {
         public string StatusCode { get; set; }
         public string Description{ get; set; }
         public ApiResponseSchema Schema{ get; set; }
     }
-    public class ApiResponseSchema
+    internal class ApiResponseSchema
     {
         public string Type { get; set; }
         public string Ref { get; set; }
         public ApiResponseSchemaItem Items { get; set; }
     }
-    public class ApiResponseSchemaItem
+    internal class ApiResponseSchemaItem
     {
         public string Type{ get; set; }
     }
 
-    public class ApiParameter
+    internal class ApiParameter : ApiBase
     {
-        public string Description { get; set; }
         public string In { get; set; }
-        public string Name { get; set; }
         public bool Required { get; set; }
-        public string Type { get; set; }
         public string Format { get; set; }
         public ApiParameterSchema Schema { get; set; }
     }
 
-    public class ApiParameterSchema
+    internal class ApiParameterSchema
     {
+        public string Ref { get; set; }
         public string Type { get; set; }
     }
 
     #region definitions
-    public class ApiParameterDefinition
+    internal class ApiParameterDefinition : ApiBase
     {
-        public string Name { get; set; }
-        public string Type { get; set; }
         public IEnumerable<ApiParameterDefinitionProperty> Properties { get; set; }
     }
-    public class ApiParameterDefinitionProperty
+    internal class ApiParameterDefinitionProperty : ApiBase
+    {
+        public string Format { get; set; }
+        public string Ref { get; set; }
+    }
+
+    internal class ApiBase
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public string Format { get; set; }
-        public string Ref { get; set; }
+
+        private string _description;
+        public string Description
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_description))
+                {
+                    return Name;
+                }
+                return _description;
+            }
+            set
+            {
+                _description = value;
+            }
+        }
     }
     #endregion
 }

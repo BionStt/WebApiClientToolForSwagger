@@ -5,7 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="templates\EntityTemplate.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="templates\EntityTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="WebApiClient.JIT" Version="0.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

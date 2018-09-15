@@ -4,6 +4,21 @@
         <name>ApiSample</name>
     </assembly>
     <members>
+        <member name="M:ApiSample.Controllers.TestController.GetDemo(System.String,System.String)">
+            <summary>
+            这个是测试GET方法
+            </summary>
+            <param name="id">参数ID</param>
+            <param name="name">参数Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiSample.Controllers.TestController.PostDemo(ApiSample.Param.TestPostParameter)">
+             <summary>
+            这个是测试POST方法 
+             </summary>
+             <param name="testPostParameter">参数PostParameter</param>
+             <returns></returns>
+        </member>
         <member name="M:ApiSample.Controllers.ValuesController.Get">
             <summary>
             GET 
@@ -35,6 +50,21 @@
             DELETE api/values/5
             </summary>
             <param name="id">ID</param>
+        </member>
+        <member name="T:ApiSample.Param.MyReturnModel">
+            <summary>
+            返回值
+            </summary>
+        </member>
+        <member name="P:ApiSample.Param.MyReturnModel.score">
+            <summary>
+            分数
+            </summary>
+        </member>
+        <member name="P:ApiSample.Param.MyReturnModel.doubleScore">
+            <summary>
+            double分数
+            </summary>
         </member>
     </members>
 </doc>

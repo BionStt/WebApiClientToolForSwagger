@@ -18,10 +18,20 @@ namespace ApiSample.Param
         public string other { get; set; }
     }
 
+    /// <summary>
+    /// 返回值
+    /// </summary>
     public class MyReturnModel
     {
+        /// <summary>
+        /// 分数
+        /// </summary>
         public decimal score{ get; set; }
+        /// <summary>
+        /// double分数
+        /// </summary>
         public double doubleScore { get; set; }
+        public float floatScore { get; set; }
         public int intScore { get; set; }
     }
 }
