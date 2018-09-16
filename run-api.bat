@@ -1,4 +1,4 @@
-cd D:\Develop\git\WebApiClientCodeGenerator\WebApiClientCodeGenerator
+cd ./ApiSample
 dotnet build
 dotnet publish -o publish
 cd publish
