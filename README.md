@@ -9,3 +9,17 @@ git clone https://github.com/fanpan26/WebApiClientToolForSwagger
 
 
 #### Swashbuckle.AspNetCore 3.0.0 .Net Core 2.1
+
+```
+        //实际应用，修改此URL即可
+        static string swaggerJsonUrl = "http://localhost:5000/swagger/v1/swagger.json";
+
+
+        static void Main(string[] args)
+        {
+            SwaggerToWebApiClientGenerator codeGenerator = new SwaggerToWebApiClientGenerator();
+            codeGenerator.Start(swaggerJsonUrl).Wait();
+            SysConsole.WriteLine("finished...");
+            SysConsole.Read();
+        }
+```
