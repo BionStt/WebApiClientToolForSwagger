@@ -37,12 +37,23 @@ namespace WebApiClient.Tool
                      .AppendLine()
                      .AppendFormat("\t\t{0}", GenerateHttpMethodAttribute(detail.HttpMethod, path.Url))
                         .AppendLine();
-                    str.AppendFormat("\t\tITask<object> {0}({1});", GenerateOperation(detail.operationId), GenerateParameters(detail.Parameters,detail.Consumes));
+                    str.AppendFormat("\t\tITask{0} {1}({2});",GenerateReturnValue(detail.Responses),GenerateOperation(detail.operationId), GenerateParameters(detail.Parameters,detail.Consumes));
                     str.AppendLine().AppendLine();
                     first = false;
                 }
             }
             return str.ToString();
+        }
+
+        private string GenerateReturnValue(ApiResponse response)
+        {
+            if (response.Schema == null)
+            {
+                return string.Empty;
+            }
+         
+            var returnType = SchemaConvert.Convert(response.Schema.Type, response.Schema.Items?.Format, response.Schema.Ref, response.Schema.Items);
+            return $"<{returnType}>";
         }
 
         private string GenerateOperation(string operationId)

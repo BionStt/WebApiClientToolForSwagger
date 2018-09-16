@@ -27,6 +27,7 @@ namespace WebApiClient.Tool
 
         public static SwaggerJson Parse(JObject json)
         {
+
             var swaggerJson = new SwaggerJson
             {
                 Info = json[KEY_INFO].ToObject<Info>(),
