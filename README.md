@@ -5,8 +5,7 @@
 ```
 git clone https://github.com/fanpan26/WebApiClientToolForSwagger
 ```
-运行 run-api.bat 
-运行 run-tool.bat
+运行 run-api.bat  run-tool.bat
 
 
 #### Swashbuckle.AspNetCore 3.0.0 .Net Core 2.1
