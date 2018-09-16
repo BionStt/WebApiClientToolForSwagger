@@ -5,10 +5,8 @@
 ```
 git clone https://github.com/fanpan26/WebApiClientToolForSwagger
 ```
-运行 ApiSample/build.bat 
+运行 run-api.bat 
+运行 run-tool.bat
 
-修改 WebApiClient.Tool.Console/Program.cs
-```
- static string swaggerJsonUrl = "http://localhost:5000/swagger/v1/swagger.json";//改成自己项目的URL
-```
-运行 WebApiClient.Tool.Console项目。
+
+#### Swashbuckle.AspNetCore 3.0.0 .Net Core 2.1
