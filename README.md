@@ -1,5 +1,6 @@
 # WebApiClientToolForSwagger
-一个用于解析swagger.json生成符合[WebApiClient](https://github.com/dotnetcore/WebApiClient)接口代码的代码生成工具
+一个用于解析swagger.json生成符合[WebApiClient](https://github.com/dotnetcore/WebApiClient)接口代码的代码生成工具.
++ （目前只支持大部分的类型解析，可能会有部分类型解析不了。在实际项目应用中慢慢完善吧） 
 
 ### quick start （demo）
 ```
