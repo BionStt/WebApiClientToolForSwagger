@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="netcoreapp2.1\**" />
+    <Content Remove="netcoreapp2.1\**" />
+    <EmbeddedResource Remove="netcoreapp2.1\**" />
+    <None Remove="netcoreapp2.1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

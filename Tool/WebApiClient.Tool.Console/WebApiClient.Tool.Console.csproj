@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tool\WebApiClient.Tool.csproj" />
+    <ProjectReference Include="..\WebApiClient.Tool.csproj" />
   </ItemGroup>
 
 </Project>
