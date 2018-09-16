@@ -33,5 +33,6 @@ namespace ApiSample.Param
         public double doubleScore { get; set; }
         public float floatScore { get; set; }
         public int intScore { get; set; }
+        public string[] array { get; set; }
     }
 }

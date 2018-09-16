@@ -91,6 +91,7 @@ namespace WebApiClient.Tool
     {
         public string Format { get; set; }
         public string Ref { get; set; }
+        public ApiResponseSchemaItem items { get; set; }
     }
 
     internal class ApiBase

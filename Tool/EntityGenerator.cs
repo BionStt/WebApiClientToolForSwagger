@@ -56,12 +56,17 @@ namespace WebApiClient.Tool
 
         private string GetTypeName(ApiParameterDefinitionProperty property)
         {
-            switch (property.Type)
+            return GetTypeName(property.Type, property.Format, property.Ref, property.items?.Type);
+        }
+
+        private string GetTypeName(string type,string format,string reference,string itemType)
+        {
+            switch (type)
             {
                 case "string":
-                    if (!string.IsNullOrEmpty(property.Format))
+                    if (!string.IsNullOrEmpty(format))
                     {
-                        switch (property.Format)
+                        switch (format)
                         {
                             case "date-time":
                                 return "DateTime?";
@@ -71,9 +76,9 @@ namespace WebApiClient.Tool
                     }
                     return "string";
                 case "integer":
-                    if (!string.IsNullOrEmpty(property.Format))
+                    if (!string.IsNullOrEmpty(format))
                     {
-                        switch (property.Format)
+                        switch (format)
                         {
                             case "int32":
                                 return "int";
@@ -83,9 +88,11 @@ namespace WebApiClient.Tool
                     }
                     return "int";
                 case "number":
-                    return property.Format;
+                    return format;
                 case "object":
-                    return property.Ref;
+                    return reference;
+                case "array":
+                    return GetTypeName(itemType, "", "", "") + "[]";
             }
             return null;
         }
