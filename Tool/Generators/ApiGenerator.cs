@@ -14,7 +14,7 @@ namespace WebApiClient.Tool
         {
             string template = await File.ReadAllTextAsync("templates\\ApiClientTemplate.txt");
             string code = template
-                .Replace("{NAMESPACE}", "Test.NameSpace")
+                .Replace("{NAMESPACE}", GlobalConfiguration.NameSpace)
                 .Replace("{INTERFACE}", "ISwaggerApi")
                 .Replace("{METHODS}", GenerateApiMethods(json.Paths));
 

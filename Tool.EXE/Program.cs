@@ -13,6 +13,8 @@ namespace WebApiClient.Tool.Console
 
         static void Main(string[] args)
         {
+            GlobalConfiguration.NameSpace = "MyNameSpace";
+
             SwaggerToWebApiClientGenerator codeGenerator = new SwaggerToWebApiClientGenerator();
             codeGenerator.Start(swaggerJsonUrl).Wait();
             SysConsole.WriteLine("finished...");

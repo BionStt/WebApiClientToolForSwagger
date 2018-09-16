@@ -24,7 +24,7 @@ namespace WebApiClient.Tool
             string properties = GenerateProperties(definition);
             string template = await File.ReadAllTextAsync("templates\\EntityTemplate.txt");
             string code = template
-                .Replace("{NAMESPACE}", "Test.NameSpace")
+                .Replace("{NAMESPACE}", GlobalConfiguration.NameSpace)
                 .Replace("{ENTITYNAME}", definition.Name)
                 .Replace("{DESCRIPTION}", definition.Description)
                 .Replace("{PROPERTIES}", properties);
