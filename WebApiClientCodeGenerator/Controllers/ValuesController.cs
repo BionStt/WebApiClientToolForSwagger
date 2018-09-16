@@ -63,7 +63,7 @@ namespace ApiSample.Controllers
         [HttpDelete("{id}")]
         public MyReturnModel Delete(int id)
         {
-            return new MyReturnModel { };
+            return new MyReturnModel { result = true, score = id };
         }
     }
 }

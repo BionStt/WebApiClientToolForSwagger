@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApiClient.Tool
 {
-    internal class ApiClientGenerator
+    internal class ApiGenerator
     {
 
         public async Task Generate(SwaggerJson json)
@@ -49,7 +49,7 @@ namespace WebApiClient.Tool
         {
             if (response.Schema == null)
             {
-                return string.Empty;
+                return $"<object>";
             }
          
             var returnType = SchemaConvert.Convert(response.Schema.Type, response.Schema.Items?.Format, response.Schema.Ref, response.Schema.Items);

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WebApiClient.Tool
 {
-    public class CodeGenerator
+    public class SwaggerToWebApiClientGenerator
     {
         private readonly EntityGenerator entityGenerator = new EntityGenerator();
-        private readonly ApiClientGenerator apiClientGenerator = new ApiClientGenerator();
+        private readonly ApiGenerator apiClientGenerator = new ApiGenerator();
 
         public async Task Start(string swaggerJsonUrl)
         {
