@@ -7,6 +7,8 @@ git clone https://github.com/fanpan26/WebApiClientToolForSwagger
 ```
 运行 run-api.bat  run-tool.bat
 
+生成代码路径 ：./Tool.EXE/publish/codes
+
 
 #### Swashbuckle.AspNetCore 3.0.0 .Net Core 2.1
 
