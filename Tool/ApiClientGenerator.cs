@@ -18,7 +18,7 @@ namespace WebApiClient.Tool
                 .Replace("{INTERFACE}", "ISwaggerApi")
                 .Replace("{METHODS}", GenerateApiMethods(json.Paths));
 
-            await FileUtil.CreateFile("codes\\", "ISwaggerApi.cs", code);
+            await FileGenerator.CreateFile("codes\\", "ISwaggerApi.cs", code);
         }
 
         private string GenerateApiMethods(IEnumerable<ApiPath> apiPaths)

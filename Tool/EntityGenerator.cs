@@ -29,7 +29,7 @@ namespace WebApiClient.Tool
                 .Replace("{DESCRIPTION}", definition.Description)
                 .Replace("{PROPERTIES}", properties);
 
-            await FileUtil.CreateFile("codes\\", definition.Name + ".cs", code);
+            await FileGenerator.CreateFile("codes\\", definition.Name + ".cs", code);
         }
 
         private string GenerateProperties(ApiParameterDefinition definition)

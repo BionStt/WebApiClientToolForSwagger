@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiClient.Tool
 {
-    internal class FileUtil
+    internal class FileGenerator
     {
         public static async Task CreateFile(string filePath,string fileName, string content)
         {
