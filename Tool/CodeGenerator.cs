@@ -9,6 +9,7 @@ namespace WebApiClient.Tool
     public class CodeGenerator
     {
         private readonly EntityGenerator entityGenerator = new EntityGenerator();
+        private readonly ApiClientGenerator apiClientGenerator = new ApiClientGenerator();
 
         public async Task Start(string swaggerJsonUrl)
         {
@@ -33,6 +34,7 @@ namespace WebApiClient.Tool
         private async Task GenerateEntity(SwaggerJson json)
         {
             await entityGenerator.Generate(json.Definitions);
+            await apiClientGenerator.Generate(json);
         }
 
     }

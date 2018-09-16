@@ -47,6 +47,7 @@ namespace WebApiClient.Tool
         public string Summary { get; set; }
         public string[] Produces { get; set; }
         public string[] Consumes { get; set; }
+        public string operationId { get; set; }
         public ApiResponse Responses { get; set; }
         public IEnumerable<ApiParameter> Parameters { get; set; }
     }
@@ -61,9 +62,9 @@ namespace WebApiClient.Tool
     {
         public string Type { get; set; }
         public string Ref { get; set; }
-        public ApiResponseSchemaItem Items { get; set; }
+        public ApiSchemaItem Items { get; set; }
     }
-    internal class ApiResponseSchemaItem
+    internal class ApiSchemaItem
     {
         public string Type{ get; set; }
         public string Format { get; set; }
@@ -81,6 +82,7 @@ namespace WebApiClient.Tool
     {
         public string Ref { get; set; }
         public string Type { get; set; }
+        public ApiSchemaItem Items { get; set; }
     }
 
     #region definitions
@@ -92,7 +94,7 @@ namespace WebApiClient.Tool
     {
         public string Format { get; set; }
         public string Ref { get; set; }
-        public ApiResponseSchemaItem items { get; set; }
+        public ApiSchemaItem items { get; set; }
     }
 
     internal class ApiBase

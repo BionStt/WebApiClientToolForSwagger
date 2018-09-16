@@ -9,9 +9,9 @@ namespace WebApiClient.Tool.Tests
         [Fact]
         public async Task GetSwaggerJsonTest()
         {
-            var client = HttpApiClient.Create<ISwaggerApi>();
-            var result = await client.GetApiJson("http://localhost:5000/swagger/v1/swagger.json");
-            var json = SwaggerJsonParser.Parse(result);
+            CodeGenerator codeGenerator = new CodeGenerator();
+            await codeGenerator.Start("http://localhost:5000/swagger/v1/swagger.json");
         }
+
     }
 }

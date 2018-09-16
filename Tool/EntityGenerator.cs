@@ -26,14 +26,10 @@ namespace WebApiClient.Tool
             string code = template
                 .Replace("{NAMESPACE}", "Test.NameSpace")
                 .Replace("{ENTITYNAME}", definition.Name)
-                .Replace("{DESCRIPTION}",definition.Description)
+                .Replace("{DESCRIPTION}", definition.Description)
                 .Replace("{PROPERTIES}", properties);
 
-            using (FileStream stream = File.Create("templates\\" + definition.Name + ".cs"))
-            {
-                await stream.WriteAsync(Encoding.UTF8.GetBytes(code));
-                
-            }
+            await FileUtil.CreateFile("codes\\", definition.Name + ".cs", code);
         }
 
         private string GenerateProperties(ApiParameterDefinition definition)
@@ -56,47 +52,7 @@ namespace WebApiClient.Tool
 
         private string GetTypeName(ApiParameterDefinitionProperty property)
         {
-            return GetTypeName(property.Type, property.Format, property.Ref, property.items);
-        }
-
-        private string GetTypeName(string type, string format, string reference, ApiResponseSchemaItem item)
-        {
-            switch (type)
-            {
-                case "string":
-                    if (!string.IsNullOrEmpty(format))
-                    {
-                        switch (format)
-                        {
-                            case "date-time":
-                                return "DateTime?";
-                            case "uuid":
-                                return "Guid";
-                        }
-                    }
-                    return "string";
-                case "integer":
-                    if (!string.IsNullOrEmpty(format))
-                    {
-                        switch (format)
-                        {
-                            case "int32":
-                                return "int";
-                            case "int64":
-                                return "long";
-                        }
-                    }
-                    return "int";
-                case "number":
-                    return format;
-                case "boolean":
-                    return "bool";
-                case "object":
-                    return reference;
-                case "array":
-                    return GetTypeName(item.Type, item.Format, "", null) + "[]";
-            }
-            return null;
+            return SchemaConvert.Convert(property.Type, property.Format, property.Ref, property.items);
         }
     }
 }

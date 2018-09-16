@@ -18,7 +18,7 @@ namespace ApiSample.Controllers
         /// <returns></returns>
         [HttpGet]
         [ActionName("getDemo")]
-        public IActionResult GetDemo(string id,string name)
+        public IActionResult GetDemo([FromHeader]string id,[FromForm]string name)
         {
             return Ok($"{id}{name}");
         }

@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="templates\ApiClientTemplate.txt" />
     <None Remove="templates\EntityTemplate.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="templates\ApiClientTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

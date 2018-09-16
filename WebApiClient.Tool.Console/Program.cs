@@ -11,6 +11,7 @@ namespace WebApiClient.Tool.Console
         {
             CodeGenerator codeGenerator = new CodeGenerator();
             codeGenerator.Start("http://localhost:5000/swagger/v1/swagger.json").Wait();
+            SysConsole.WriteLine("finished...");
             SysConsole.Read();
         }
     }
