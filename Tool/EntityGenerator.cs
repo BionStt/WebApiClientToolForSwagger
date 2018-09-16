@@ -56,10 +56,10 @@ namespace WebApiClient.Tool
 
         private string GetTypeName(ApiParameterDefinitionProperty property)
         {
-            return GetTypeName(property.Type, property.Format, property.Ref, property.items?.Type);
+            return GetTypeName(property.Type, property.Format, property.Ref, property.items);
         }
 
-        private string GetTypeName(string type,string format,string reference,string itemType)
+        private string GetTypeName(string type, string format, string reference, ApiResponseSchemaItem item)
         {
             switch (type)
             {
@@ -89,10 +89,12 @@ namespace WebApiClient.Tool
                     return "int";
                 case "number":
                     return format;
+                case "boolean":
+                    return "bool";
                 case "object":
                     return reference;
                 case "array":
-                    return GetTypeName(itemType, "", "", "") + "[]";
+                    return GetTypeName(item.Type, item.Format, "", null) + "[]";
             }
             return null;
         }

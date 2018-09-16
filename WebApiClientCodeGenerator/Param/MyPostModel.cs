@@ -34,5 +34,8 @@ namespace ApiSample.Param
         public float floatScore { get; set; }
         public int intScore { get; set; }
         public string[] array { get; set; }
+        public IEnumerable<int> intarray { get; set; }
+        public IEnumerable<long> longarray { get; set; }
+        public bool result { get; set; }
     }
 }

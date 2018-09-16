@@ -66,6 +66,7 @@ namespace WebApiClient.Tool
     internal class ApiResponseSchemaItem
     {
         public string Type{ get; set; }
+        public string Format { get; set; }
     }
 
     internal class ApiParameter : ApiBase
