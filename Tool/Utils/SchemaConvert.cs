@@ -42,7 +42,7 @@ namespace WebApiClient.Tool
                 case "object":
                     return reference;
                 case "array":
-                    return Convert(item.Type, item.Format, "", null) + "[]";
+                    return Convert(item?.Type??"object", item?.Format??"", reference, null) + "[]";
             }
             return null;
 

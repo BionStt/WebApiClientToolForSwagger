@@ -8,7 +8,7 @@ namespace WebApiClient.Tool.Console
     class Program
     {
 
-        static string swaggerJsonUrl = "http://localhost:5000/swagger/v1/swagger.json";
+        static string swaggerJsonUrl = "http://localhost:2121/swagger/v1/swagger.json";
 
 
         static void Main(string[] args)

@@ -15,7 +15,7 @@ namespace WebApiClient.Tool
         {
             foreach (var definition in definitions)
             {
-                await Generate(definition);               
+                await Generate(definition);
             }
         }
 

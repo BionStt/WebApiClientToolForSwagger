@@ -67,6 +67,13 @@ namespace WebApiClient.Tool
                     prop.Ref = ParseSchemaRef(jProperty.Value);
                     prop.Type = KEY_OBJECT;
                 }
+                if (prop.items == null && string.IsNullOrEmpty(prop.Format))
+                {
+                    if (prop.Type == "array")
+                    {
+                        prop.Ref = ParseSchemaRef(jProperty.Value["items"]);
+                    }
+                }
                 prop.Name = jProperty.Name;
                 properties.Add(prop);
             }
